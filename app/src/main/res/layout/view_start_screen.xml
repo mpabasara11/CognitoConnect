@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Controllers.Controller_StartScreen"
+    android:background="@drawable/background_2">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="100dp"
+        android:text="Welcome!"
+        android:textAlignment="viewStart"
+        android:textColor="#1D14A1"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:text="Feel the conversation. See the emotion 😏"
+        android:textColor="#1D14A1"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/cognito_connect" />
+
+    <Button
+        android:id="@+id/btn_to_signin"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_type1"
+        android:text="SIGN IN"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_gravity="center" />
+
+    <Button
+        android:id="@+id/btn_to_signup"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:text="SIGN UP"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:background="@drawable/button_type1" />
+
+
+</LinearLayout>

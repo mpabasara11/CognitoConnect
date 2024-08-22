@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1003688894370",
+    "project_id": "cognitoconnect-dabeb",
+    "storage_bucket": "cognitoconnect-dabeb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1003688894370:android:fee72d6583cb56e8085cfb",
+        "android_client_info": {
+          "package_name": "com.cognitoapps.cognitoconnect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLMP_54oXHIPo0CYTUgLGjNahgpfycxgc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

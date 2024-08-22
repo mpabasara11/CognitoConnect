@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".Controllers.Controller_SignUp"
+    android:background="@drawable/background_1">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:layout_marginBottom="15dp"
+        android:text="Create Account"
+        android:inputType="numberSigned"
+        android:textAlignment="center"
+        android:textColor="#F3EEEE"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        app:srcCompat="@drawable/user_icon"/>
+
+    <EditText
+        android:id="@+id/txt_signup_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginHorizontal="40dp"
+        android:backgroundTint="#ffffff"
+        android:hint="Mobile Number"
+        android:inputType="numberSigned"
+        android:textColor="#ffffff"
+        android:textColorHint="#F3EEEE" />
+
+    <EditText
+        android:id="@+id/txt_signup_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginHorizontal="40dp"
+        android:backgroundTint="#ffffff"
+        android:ems="15"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="#ffffff"
+        android:textColorHint="#ECE5E5" />
+
+    <EditText
+        android:id="@+id/txt_signup_conf_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="40dp"
+        android:backgroundTint="#ffffff"
+        android:ems="15"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:textColor="#ffffff"
+        android:textColorHint="#F8F6F6" />
+
+    <Button
+        android:id="@+id/btn_signup"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginHorizontal="40dp"
+        android:background="@drawable/button_type1"
+        android:text="Create Account"
+        android:textColor="@color/white" />
+
+
+</LinearLayout>
