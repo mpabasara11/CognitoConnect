@@ -8,35 +8,41 @@
     android:orientation="vertical"
     tools:context=".Controllers.Controller_Home">
 
-
+    <!-- Username TextView -->
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/lbl_username"
         android:layout_width="321dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="4dp"
-        android:text="Online"
-        android:textAlignment="center"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:text="Chats"
         android:textColor="#F3EEEE"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.22"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- RecyclerView for Chat Items -->
+
+    <!-- New Chat Button -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcl_chat_view"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="689dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/lbl_username"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btn_new_chat"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_width="294dp"
+        android:layout_height="51dp"
         android:layout_gravity="center"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_type1"
@@ -47,6 +53,21 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- Sign Out Button -->
+    <Button
+        android:id="@+id/btn_sign_out"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/button_type2"
+
+        android:text="Sign Out"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Guidelines (if needed) -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"

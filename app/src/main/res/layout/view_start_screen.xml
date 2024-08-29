@@ -37,7 +37,7 @@
     <Button
         android:id="@+id/btn_to_signin"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
@@ -50,7 +50,7 @@
     <Button
         android:id="@+id/btn_to_signup"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginHorizontal="30dp"
         android:text="SIGN UP"
         android:textColor="@color/white"

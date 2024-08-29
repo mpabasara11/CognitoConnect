@@ -1,5 +1,6 @@
 package com.cognitoapps.cognitoconnect.Controllers;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +33,9 @@ public class Controller_StartScreen extends AppCompatActivity {
                 Intent intent = new Intent(Controller_StartScreen.this, Controller_SignIn.class);
                 startActivity(intent);
 
+                //clear the activity
+                finish();
+
             }
         });
 
@@ -43,9 +47,21 @@ public class Controller_StartScreen extends AppCompatActivity {
 
                 Intent intent = new Intent(Controller_StartScreen.this, Controller_SignUp.class);
                 startActivity(intent);
+
+                //clear the activity
+                finish();
             }
         });
 
 
     }
+
+
+    //back press removed
+    @SuppressLint("MissingSuperCall")
+    @Override
+    public void onBackPressed() {
+        //   super.onBackPressed();
+    }
+
 }

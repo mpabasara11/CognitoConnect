@@ -3,13 +3,13 @@ package com.cognitoapps.cognitoconnect.Models;
 public class Model_Chat {
 
 
-    String identity,status,chat_id;
+    String identity,created,chat_id;
 
     public Model_Chat(){}
 
 
-    public Model_Chat(String identity,String status,String chat_id) {
-       this.status = status;
+    public Model_Chat(String identity,String created,String chat_id) {
+       this.created = created;
        this.identity = identity;
        this.chat_id = chat_id;
 
@@ -17,13 +17,15 @@ public class Model_Chat {
 
 
 
-    public String getStatus() {
+    public String getCreated() {
 
-        return status;
+       return created;
+
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setCreated(String created) {
+        this.created = created;
+
 
     }
 

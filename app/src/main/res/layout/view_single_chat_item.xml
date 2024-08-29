@@ -16,14 +16,14 @@
 
 
         <ImageView
-            android:id="@+id/img_order_item_product"
+            android:id="@+id/img_usr"
             android:layout_width="116dp"
             android:layout_height="112dp"
             android:layout_marginTop="5dp"
             tools:srcCompat="@drawable/user_icon" />
 
         <TextView
-            android:id="@+id/lbl_online_status"
+            android:id="@+id/lbl_chat_created"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -36,7 +36,7 @@
             android:id="@+id/lbl_identity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/lbl_online_status"
+            android:layout_below="@+id/lbl_chat_created"
             android:layout_marginTop="10dp"
             android:paddingStart="160dp"
             android:text="#identity"

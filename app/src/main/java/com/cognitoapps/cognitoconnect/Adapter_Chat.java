@@ -4,16 +4,18 @@ package com.cognitoapps.cognitoconnect;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.util.Log;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.cognitoapps.cognitoconnect.Controllers.Controller_Chat;
 import com.cognitoapps.cognitoconnect.Models.Model_Chat;
 import com.cognitoapps.cognitoconnect.Models.Model_Current_User;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -41,31 +43,60 @@ public class Adapter_Chat extends FirebaseRecyclerAdapter<Model_Chat, Adapter_Ch
 
 
 
-        holder.status.setText(model.getStatus());
+        holder.created.setText("Created on : "+model.getCreated());
         holder.identity.setText(model.getIdentity());
+        holder.img.setImageResource(R.drawable.user_icon);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 CharSequence options[] = new CharSequence[]
                         {
+                                "Enter Chat",
                                 "Remove This",
                                 "Dismiss"
                         };
                 //alert to select two options
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle("Do you want to remove this");
+                builder.setTitle("Select an option");
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        if (i == 0) {
+                        if(i==0)
+                        {
+                            ///////////////
+                            Intent intent = new Intent(context, Controller_Chat.class);
+
+                            intent.putExtra("chat_owner",Model_Current_User.usrStore.getPhone() );
+                            intent.putExtra("chat_recipient", model.getIdentity());
+                            intent.putExtra("chat_id", model.getChat_id());
+
+                            //redirecting
+                            context.startActivity(intent);
 
 
-                        //    FirebaseDatabase.getInstance().getReference().child("Chat_log").child(Model_Current_User.usrStore.getPhone()).child(model.getIdentity()).removeValue();
+                            ////////////////
 
-                          //  FirebaseDatabase.getInstance().getReference().child("Cart_List").child("User_View").child(Current_User_Store.usrStore.getPhone()).child(model.getUid()).removeValue();
+                        }
+                       else if (i == 1) {
 
-                         //   Toast.makeText(context, "Chat history cleared ", Toast.LENGTH_SHORT).show();
+
+                           //remove value at removers
+                            FirebaseDatabase.getInstance().getReference().child("Chat_log").child(Model_Current_User.usrStore.getPhone()).child(model.getIdentity()).removeValue();
+
+
+                            //remove value at other party
+
+                            FirebaseDatabase.getInstance().getReference().child("Chat_log").child(model.getIdentity()).child(Model_Current_User.usrStore.getPhone()).removeValue();
+
+
+                            //remove values from chats
+
+                            FirebaseDatabase.getInstance().getReference().child("Chats").child(model.getChat_id()).removeValue();
+
+
+
+                            Toast.makeText(context, "Chat history cleared ", Toast.LENGTH_SHORT).show();
 
                         }
                     }
@@ -85,14 +116,16 @@ public class Adapter_Chat extends FirebaseRecyclerAdapter<Model_Chat, Adapter_Ch
     }
 
     class Chat_viewHolder extends RecyclerView.ViewHolder {
-        TextView status,identity;
+        TextView created,identity;
+        ImageView img;
 
 
         public Chat_viewHolder(@NonNull View itemView) {
             super(itemView);
 
-            status = itemView.findViewById(R.id.lbl_online_status);
+            created = itemView.findViewById(R.id.lbl_chat_created);
             identity = itemView.findViewById(R.id.lbl_identity);
+            img = itemView.findViewById(R.id.img_usr);
 
 
         }

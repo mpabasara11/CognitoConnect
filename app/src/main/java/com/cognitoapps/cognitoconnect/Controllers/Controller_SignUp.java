@@ -1,5 +1,6 @@
 package com.cognitoapps.cognitoconnect.Controllers;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -189,4 +190,15 @@ public class Controller_SignUp extends AppCompatActivity {
             }
         });
     }
+
+    @SuppressLint("MissingSuperCall")
+    @Override
+    public void onBackPressed() {
+        //  super.onBackPressed();
+
+        Intent intent = new Intent(Controller_SignUp.this, Controller_StartScreen.class);
+        startActivity(intent);
+    }
+
+
 }

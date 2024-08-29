@@ -15,6 +15,12 @@
         android:theme="@style/Theme.CognitoConnect"
         tools:targetApi="31">
         <activity
+            android:name=".Controllers.Controller_Chat"
+            android:exported="false" />
+        <activity
+            android:name=".Controllers.Controller_Create_New_Message"
+            android:exported="false" />
+        <activity
             android:name=".Controllers.Controller_Home"
             android:exported="false" />
         <activity
