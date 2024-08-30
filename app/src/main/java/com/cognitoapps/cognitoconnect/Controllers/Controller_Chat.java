@@ -1,5 +1,6 @@
 package com.cognitoapps.cognitoconnect.Controllers;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -121,6 +122,7 @@ public class Controller_Chat extends AppCompatActivity {
     }
 
 
+    @SuppressLint("MissingSuperCall")
     @Override
     public void onBackPressed() {
       //  super.onBackPressed();

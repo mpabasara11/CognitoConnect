@@ -84,7 +84,7 @@ public class Controller_Create_New_Message extends AppCompatActivity {
                             loading_bar.show();
 
 
-                            if(!(snapshot.child("Chat_log").child(phones_num).exists()))
+                            if(!(snapshot.child("Chat_log").child(Model_Current_User.usrStore.getPhone()).child(phones_num).exists()))
                             {
                                 String chat_id = Model_Current_User.usrStore.getPhone()+phones_num;
                                 /////////////
