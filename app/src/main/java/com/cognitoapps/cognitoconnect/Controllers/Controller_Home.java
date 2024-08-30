@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cognitoapps.cognitoconnect.Adapter_Chat;
+import com.cognitoapps.cognitoconnect.Controllers.Adapters.Adapter_Chat;
 import com.cognitoapps.cognitoconnect.Models.Model_Chat;
 import com.cognitoapps.cognitoconnect.Models.Model_Current_User;
 import com.cognitoapps.cognitoconnect.R;
@@ -37,7 +37,7 @@ public class Controller_Home extends AppCompatActivity {
         btn_new_chat = findViewById(R.id.btn_new_chat);
         btn_sign_out = findViewById(R.id.btn_sign_out);
         recyclerView_chats.setLayoutManager(new LinearLayoutManager(this));
-        lbl_username = findViewById(R.id.lbl_username);
+        lbl_username = findViewById(R.id.lbl_chat);
 
           // lbl_username.setText("User : "+Model_Current_User.usrStore.getPhone());
 

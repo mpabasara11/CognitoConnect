@@ -1,4 +1,4 @@
-package com.cognitoapps.cognitoconnect;
+package com.cognitoapps.cognitoconnect.Controllers.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cognitoapps.cognitoconnect.Models.Model_Conversation;
 import com.cognitoapps.cognitoconnect.Models.Model_Current_User;
+import com.cognitoapps.cognitoconnect.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 

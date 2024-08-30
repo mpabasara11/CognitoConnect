@@ -7,20 +7,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
+
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cognitoapps.cognitoconnect.Adapter_Chat;
-import com.cognitoapps.cognitoconnect.Adapter_Conversation;
-import com.cognitoapps.cognitoconnect.Models.Model_Chat;
+
+import com.cognitoapps.cognitoconnect.Controllers.Adapters.Adapter_Conversation;
 import com.cognitoapps.cognitoconnect.Models.Model_Conversation;
 import com.cognitoapps.cognitoconnect.Models.Model_Current_User;
 import com.cognitoapps.cognitoconnect.R;
@@ -35,7 +32,7 @@ public class Controller_Chat extends AppCompatActivity {
 
     EditText input_message;
     TextView lbl_username;
-    Button btn_send_message;
+    Button btn_send_message,btn_settings;
     ProgressDialog loading_bar;
 
     String chat_owner,chat_recipient,chat_id;
@@ -52,6 +49,7 @@ public class Controller_Chat extends AppCompatActivity {
         input_message = findViewById(R.id.txt_new_message);
         lbl_username = findViewById(R.id.lbl_receiver_username);
         btn_send_message = findViewById(R.id.btn_send_message);
+        btn_settings = findViewById(R.id.btn_settings);
 
 
         recyclerView = findViewById(R.id.rcl_chat_view);
@@ -59,7 +57,8 @@ public class Controller_Chat extends AppCompatActivity {
 
 
 
-        chat_owner = getIntent().getStringExtra("chat_owner");
+
+        chat_owner = Model_Current_User.usrStore.getPhone();
         chat_recipient = getIntent().getStringExtra("chat_recipient");
         chat_id = getIntent().getStringExtra("chat_id");
 
@@ -73,13 +72,6 @@ public class Controller_Chat extends AppCompatActivity {
 
         adapterConversation = new Adapter_Conversation(options, this);
         recyclerView.setAdapter(adapterConversation);
-
-
-
-
-
-
-
 
 
 
@@ -111,10 +103,32 @@ public class Controller_Chat extends AppCompatActivity {
      input_message.requestFocus();
  }
 
-
-
-            }
+  }
         });
+
+
+
+
+
+
+btn_settings.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+
+
+        Intent intent = new Intent(Controller_Chat.this, Controller_Chat_Settings.class);
+        intent.putExtra("chat_recipient", chat_recipient);
+        intent.putExtra("chat_id", chat_id);
+        startActivity(intent);
+
+
+    }
+});
+
+
+
+
+
 
 
 

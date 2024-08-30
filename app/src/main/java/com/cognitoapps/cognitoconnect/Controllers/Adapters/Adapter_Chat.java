@@ -1,4 +1,4 @@
-package com.cognitoapps.cognitoconnect;
+package com.cognitoapps.cognitoconnect.Controllers.Adapters;
 
 
 import android.app.AlertDialog;
@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cognitoapps.cognitoconnect.Controllers.Controller_Chat;
 import com.cognitoapps.cognitoconnect.Models.Model_Chat;
 import com.cognitoapps.cognitoconnect.Models.Model_Current_User;
+import com.cognitoapps.cognitoconnect.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
@@ -66,8 +67,6 @@ public class Adapter_Chat extends FirebaseRecyclerAdapter<Model_Chat, Adapter_Ch
                         {
                             ///////////////
                             Intent intent = new Intent(context, Controller_Chat.class);
-
-                            intent.putExtra("chat_owner",Model_Current_User.usrStore.getPhone() );
                             intent.putExtra("chat_recipient", model.getIdentity());
                             intent.putExtra("chat_id", model.getChat_id());
 

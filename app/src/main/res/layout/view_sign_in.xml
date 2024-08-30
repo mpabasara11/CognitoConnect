@@ -1,70 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_1"
     android:orientation="vertical"
-    tools:context=".Controllers.Controller_SignIn"
-    android:background="@drawable/background_1">
+    tools:context=".Controllers.Controller_SignIn">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
-        android:layout_marginBottom="15dp"
-        android:text="Sign In"
+        android:id="@+id/textView4"
+        android:layout_width="167dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="64dp"
         android:inputType="numberSigned"
+        android:minHeight="48dp"
+        android:text="Sign In"
         android:textAlignment="center"
         android:textColor="#F3EEEE"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
+        android:id="@+id/imageView2"
+        android:layout_width="225dp"
         android:layout_height="100dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView4"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:srcCompat="@drawable/user_icon" />
+
 
     <EditText
         android:id="@+id/txt_signin_phone"
         android:layout_width="300dp"
-        android:inputType="numberSigned"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginHorizontal="60dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/input_textbox_type_1"
         android:drawableStart="@drawable/ic_baseline_person_24"
-        android:paddingStart="10dp"
         android:ems="10"
         android:hint="Enter Mobile "
-        android:textSize="15sp" />
+        android:inputType="numberSigned"
+        android:paddingStart="10dp"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
 
     <EditText
         android:id="@+id/txt_signin_pass"
         android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginHorizontal="60dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/input_textbox_type_1"
         android:drawableStart="@drawable/ic_baseline_lock_24"
-        android:paddingStart="10dp"
         android:ems="10"
         android:hint="Enter Password"
         android:inputType="textPassword"
-        android:textSize="15sp" />
-
+        android:paddingStart="10dp"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_signin_phone"
+        app:layout_constraintStart_toStartOf="@+id/txt_signin_phone"
+        app:layout_constraintTop_toBottomOf="@+id/txt_signin_phone" />
 
     <Button
         android:id="@+id/btn_signin"
         android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="10dp"
+        android:layout_height="48dp"
         android:layout_marginHorizontal="60dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/button_type1"
         android:text="Sign In"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/txt_signin_pass"
+        app:layout_constraintStart_toStartOf="@+id/txt_signin_pass"
+        app:layout_constraintTop_toBottomOf="@+id/txt_signin_pass" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

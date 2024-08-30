@@ -124,8 +124,6 @@ public class Controller_Create_New_Message extends AppCompatActivity {
                                 finish();
 
                                 Intent intent = new Intent(Controller_Create_New_Message.this, Controller_Chat.class);
-
-                                intent.putExtra("chat_owner",Model_Current_User.usrStore.getPhone() );
                                 intent.putExtra("chat_recipient", phones_num);
                                 intent.putExtra("chat_id", chat_id);
                                 startActivity(intent);
@@ -141,7 +139,6 @@ public class Controller_Create_New_Message extends AppCompatActivity {
                                 String chat_id = Model_Current_User.usrStore.getPhone()+phones_num;
 
                                 Intent intent = new Intent(Controller_Create_New_Message.this, Controller_Chat.class);
-                                intent.putExtra("chat_owner",Model_Current_User.usrStore.getPhone() );
                                 intent.putExtra("chat_recipient", phones_num);
                                 intent.putExtra("chat_id", chat_id);
                                 startActivity(intent);

@@ -10,17 +10,17 @@
 
     <!-- Username TextView -->
     <TextView
-        android:id="@+id/lbl_username"
-        android:layout_width="321dp"
+        android:id="@+id/lbl_chat"
+        android:layout_width="290dp"
         android:layout_height="35dp"
         android:layout_marginTop="10dp"
         android:text="Chats"
         android:textColor="#F3EEEE"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.22"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/rcl_chat_view"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="@+id/rcl_chat_view"
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- RecyclerView for Chat Items -->
@@ -28,58 +28,42 @@
     <!-- New Chat Button -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcl_chat_view"
-        android:layout_width="match_parent"
-        android:layout_height="689dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="390dp"
+        android:layout_height="0dp"
         android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_username"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toTopOf="@+id/btn_new_chat"
+        app:layout_constraintEnd_toEndOf="@+id/btn_new_chat"
+        app:layout_constraintStart_toStartOf="@+id/btn_new_chat"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_chat" />
+
+    <!-- Sign Out Button -->
 
     <Button
         android:id="@+id/btn_new_chat"
-        android:layout_width="294dp"
-        android:layout_height="51dp"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="16dp"
         android:background="@drawable/button_type1"
         android:text="New Message"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.978" />
 
-    <!-- Sign Out Button -->
     <Button
         android:id="@+id/btn_sign_out"
-        android:layout_width="wrap_content"
+        android:layout_width="88dp"
         android:layout_height="35dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/button_type2"
+        android:layout_marginStart="8dp"
 
+        android:background="@drawable/button_type2"
         android:text="Sign Out"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/lbl_chat"
+        app:layout_constraintStart_toEndOf="@+id/lbl_chat" />
 
-    <!-- Guidelines (if needed) -->
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="0dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="67dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
