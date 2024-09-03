@@ -70,6 +70,7 @@ public class Adapter_Chat extends FirebaseRecyclerAdapter<Model_Chat, Adapter_Ch
                             intent.putExtra("chat_recipient", model.getIdentity());
                             intent.putExtra("chat_id", model.getChat_id());
 
+
                             //redirecting
                             context.startActivity(intent);
 

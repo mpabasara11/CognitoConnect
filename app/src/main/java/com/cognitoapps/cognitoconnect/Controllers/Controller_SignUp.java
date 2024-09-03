@@ -150,6 +150,8 @@ public class Controller_SignUp extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void unused) {
 
+
+
                             Toast.makeText(Controller_SignUp.this, "Congratulations, your account has been created.", Toast.LENGTH_SHORT).show();
                             loading_bar.dismiss();
 

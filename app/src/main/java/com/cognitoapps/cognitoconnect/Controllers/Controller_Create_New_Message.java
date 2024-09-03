@@ -99,6 +99,8 @@ public class Controller_Create_New_Message extends AppCompatActivity {
                                     userdataMap.put("identity", phones_num);
                                     userdataMap.put("created", currentDate);
                                     userdataMap.put("chat_id", chat_id);
+                                    userdataMap.put("face_exp",false);
+                                    userdataMap.put("last_seen",false);
 
 
                                   RootRef.child("Chat_log").child(Model_Current_User.usrStore.getPhone()).child(phones_num).updateChildren(userdataMap);
@@ -113,9 +115,10 @@ public class Controller_Create_New_Message extends AppCompatActivity {
                                 userdataMap.put("identity", Model_Current_User.usrStore.getPhone());
                                 userdataMap.put("created", currentDate);
                                 userdataMap.put("chat_id", chat_id);
+                                userdataMap.put("face_exp",false);
+                                userdataMap.put("last_seen",false);
 
                                 RootRef.child("Chat_log").child(phones_num).child(Model_Current_User.usrStore.getPhone()).updateChildren(userdataMap);
-
 
 
                                 loading_bar.dismiss();

@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,12 +19,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.cognitoapps.cognitoconnect.Controllers.Adapters.Adapter_Conversation;
+import com.cognitoapps.cognitoconnect.Models.Model_Chat;
 import com.cognitoapps.cognitoconnect.Models.Model_Conversation;
 import com.cognitoapps.cognitoconnect.Models.Model_Current_User;
 import com.cognitoapps.cognitoconnect.R;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
@@ -31,12 +36,13 @@ public class Controller_Chat extends AppCompatActivity {
 
 
     EditText input_message;
-    TextView lbl_username;
+    TextView lbl_username,lbl_emotion;
     Button btn_send_message,btn_settings;
     ProgressDialog loading_bar;
 
     String chat_owner,chat_recipient,chat_id;
 
+boolean x;
      RecyclerView recyclerView;
      Adapter_Conversation adapterConversation;
 
@@ -50,6 +56,8 @@ public class Controller_Chat extends AppCompatActivity {
         lbl_username = findViewById(R.id.lbl_receiver_username);
         btn_send_message = findViewById(R.id.btn_send_message);
         btn_settings = findViewById(R.id.btn_settings);
+        lbl_emotion = findViewById(R.id.lbl_emotion);
+
 
 
         recyclerView = findViewById(R.id.rcl_chat_view);
@@ -62,6 +70,34 @@ public class Controller_Chat extends AppCompatActivity {
         chat_recipient = getIntent().getStringExtra("chat_recipient");
         chat_id = getIntent().getStringExtra("chat_id");
 
+
+
+
+
+        final DatabaseReference RootRef1;
+        RootRef1 = FirebaseDatabase.getInstance().getReference();
+
+        RootRef1.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.child("Chat_log").child(chat_owner).child(chat_recipient).exists()) {
+
+                    Model_Chat chatData = snapshot.child("Chat_log").child(chat_owner).child(chat_recipient).getValue(Model_Chat.class);
+
+                    if (chatData != null) {
+
+                    /////////////////////////////////
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         lbl_username.setText("Recipient: "+ chat_recipient);
 
 
@@ -72,7 +108,6 @@ public class Controller_Chat extends AppCompatActivity {
 
         adapterConversation = new Adapter_Conversation(options, this);
         recyclerView.setAdapter(adapterConversation);
-
 
 
 
@@ -108,9 +143,6 @@ public class Controller_Chat extends AppCompatActivity {
 
 
 
-
-
-
 btn_settings.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
@@ -124,12 +156,6 @@ btn_settings.setOnClickListener(new View.OnClickListener() {
 
     }
 });
-
-
-
-
-
-
 
 
 
