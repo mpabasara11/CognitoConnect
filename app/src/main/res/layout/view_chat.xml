@@ -12,7 +12,7 @@
 
     <org.opencv.android.JavaCameraView
         android:id="@+id/tutorial1_activity_java_surface_view"
-        android:layout_width="109dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,6 +47,7 @@
         android:layout_height="0dp"
         android:background="@android:color/transparent"
         android:padding="10dp"
+
         app:layout_constraintBottom_toTopOf="@+id/txt_new_message"
         app:layout_constraintEnd_toEndOf="@+id/txt_new_message"
         app:layout_constraintStart_toStartOf="@+id/txt_new_message"
@@ -61,6 +62,7 @@
         android:layout_column="0"
         android:layout_marginBottom="16dp"
         android:ems="100"
+
         android:hint="New message "
         android:background="@drawable/input_textbox_type_1"
 
