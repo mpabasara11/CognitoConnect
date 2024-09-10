@@ -87,6 +87,7 @@ public class Controller_Chat_Settings extends AppCompatActivity {
 
                 }
 
+
             }
 
             @Override
@@ -184,12 +185,6 @@ public class Controller_Chat_Settings extends AppCompatActivity {
 
 
         });
-
-
-
-
-
-
 
 
 

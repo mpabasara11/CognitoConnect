@@ -31,6 +31,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cognitoapps.cognitoconnect.Controllers.Adapters.Adapter_Conversation;
 import com.cognitoapps.cognitoconnect.Models.Model_Chat;
+import com.cognitoapps.cognitoconnect.Models.Model_Chat_Data;
 import com.cognitoapps.cognitoconnect.Models.Model_Conversation;
 import com.cognitoapps.cognitoconnect.Models.Model_Current_User;
 import com.cognitoapps.cognitoconnect.R;
@@ -116,20 +117,19 @@ public class Controller_Chat extends CameraActivity implements CvCameraViewListe
         chat_id = getIntent().getStringExtra("chat_id");
 
 
-
+///////////////////////////////update our emotion to db//////////////////////////////////////////////////
         final DatabaseReference RootRef1;
         RootRef1 = FirebaseDatabase.getInstance().getReference();
 
-        RootRef1.addListenerForSingleValueEvent(new ValueEventListener() {
+        RootRef1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.child("Chat_log").child(chat_recipient).child(chat_owner).exists()) {
+                if (snapshot.child("Chat_log").child(chat_owner).child(chat_recipient).exists()) {
 
-                    Model_Chat chatData = snapshot.child("Chat_log").child(chat_recipient).child(chat_owner).getValue(Model_Chat.class);
+                    Model_Chat chatData = snapshot.child("Chat_log").child(chat_owner).child(chat_recipient).getValue(Model_Chat.class);
 
                     if (chatData != null) {
 
-                        //////////////////
 
                         if (chatData.getFace_exp())
                         {
@@ -140,11 +140,11 @@ public class Controller_Chat extends CameraActivity implements CvCameraViewListe
                             mOpenCvCameraView.disableView();
                         }
 
-                        ///////////////////
-
 
                     }
                 }
+
+
             }
 
             @Override
@@ -152,6 +152,57 @@ public class Controller_Chat extends CameraActivity implements CvCameraViewListe
 
             }
         });
+
+
+
+        ////////////////////update emotion label from db//////////////////////
+        final DatabaseReference RootRef2;
+        RootRef2 = FirebaseDatabase.getInstance().getReference();
+
+        RootRef2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if (snapshot.child("Chat_log").child(chat_recipient).child(chat_owner).exists())
+                {
+                    Model_Chat chatData = snapshot.child("Chat_log").child(chat_recipient).child(chat_owner).getValue(Model_Chat.class);
+
+                    if(chatData != null) {
+
+
+                        boolean is_facial_exp_on = chatData.getFace_exp();
+
+                        if(is_facial_exp_on)
+                        {
+
+                            update_emotion(chat_recipient,chat_owner);
+                        }
+                        else
+                        {
+
+                          lbl_emotion.setText("");
+
+                        }
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
+
+///////////////////////////////////////////////////////
+
+
+
 
         lbl_username.setText("Recipient: "+ chat_recipient);
 
@@ -215,6 +266,40 @@ btn_settings.setOnClickListener(new View.OnClickListener() {
 
     enableFaceDetection();
 
+
+    }
+
+
+
+    public void update_emotion(String chat_recipient,String chat_owner)
+    {
+
+        final DatabaseReference RootRef0;
+        RootRef0 = FirebaseDatabase.getInstance().getReference();
+
+        RootRef0.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if (snapshot.child("Chat_data").child(chat_recipient).child(chat_owner).exists())
+                {
+                    Model_Chat_Data chatData = snapshot.child("Chat_data").child(chat_recipient).child(chat_owner).getValue(Model_Chat_Data.class);
+
+                    if(chatData != null)
+                    {
+                         lbl_emotion.setText(chatData.getEmotion());
+
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 
@@ -408,13 +493,16 @@ btn_settings.setOnClickListener(new View.OnClickListener() {
 
             Log.d("emotion", "Detected emotion: " + detectedEmotion);
 
-            // Update text field on main thread using Handler
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    lbl_emotion.setText(""+detectedEmotion);
-                }
-            });
+            final DatabaseReference RootRef;
+            RootRef = FirebaseDatabase.getInstance().getReference();
+
+
+                    HashMap<String, Object> chatDataMap = new HashMap<>();
+                    chatDataMap.put("emotion", detectedEmotion);
+                    RootRef.child("Chat_data").child(chat_owner).child(chat_recipient).updateChildren(chatDataMap);
+
+
+
 
         }
 

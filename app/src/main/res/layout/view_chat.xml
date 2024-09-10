@@ -41,53 +41,55 @@
         app:layout_constraintStart_toStartOf="@+id/lbl_emotion"
         app:layout_constraintTop_toTopOf="@+id/tutorial1_activity_java_surface_view" />
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcl_chat_view"
         android:layout_width="390dp"
         android:layout_height="0dp"
+        android:layout_marginStart="78dp"
+        android:layout_marginEnd="76dp"
+
+        android:layout_marginBottom="5dp"
         android:background="@android:color/transparent"
         android:padding="10dp"
-
         app:layout_constraintBottom_toTopOf="@+id/txt_new_message"
-        app:layout_constraintEnd_toEndOf="@+id/txt_new_message"
-        app:layout_constraintStart_toStartOf="@+id/txt_new_message"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_emotion" />
+        app:layout_constraintEnd_toEndOf="@+id/lbl_emotion"
+        app:layout_constraintStart_toStartOf="@+id/lbl_emotion"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_emotion"
+        app:layout_constraintVertical_bias="0.338" />
 
     <EditText
         android:id="@+id/txt_new_message"
-        android:layout_width="369dp"
+        android:layout_width="322dp"
         android:layout_height="40dp"
-        android:paddingStart="10dp"
-        android:layout_row="0"
-        android:layout_column="0"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="56dp"
         android:layout_marginBottom="16dp"
-        android:ems="100"
-
-        android:hint="New message "
         android:background="@drawable/input_textbox_type_1"
 
+        android:ems="100"
+        android:hint="New message "
         android:inputType="text"
+        android:paddingStart="10dp"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_send_message"
-        app:layout_constraintEnd_toEndOf="@+id/btn_send_message"
-        app:layout_constraintStart_toStartOf="@+id/btn_send_message" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/rcl_chat_view"
+        app:layout_constraintStart_toStartOf="@+id/rcl_chat_view" />
 
     <Button
         android:id="@+id/btn_send_message"
-        android:layout_width="365dp"
-        android:layout_height="45dp"
-
-        android:layout_row="1"
-        android:layout_column="0"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginBottom="12dp"
-        android:background="@drawable/button_type4"
-        android:text="Send"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginStart="8dp"
 
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:drawableLeft="@drawable/button_type5"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_new_message"
+        app:layout_constraintStart_toEndOf="@+id/txt_new_message"
+        app:layout_constraintTop_toTopOf="@+id/txt_new_message"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btn_settings"
@@ -108,8 +110,8 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/rcl_chat_view"
-        app:layout_constraintStart_toStartOf="@+id/rcl_chat_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lbl_receiver_username" />
 
     <View

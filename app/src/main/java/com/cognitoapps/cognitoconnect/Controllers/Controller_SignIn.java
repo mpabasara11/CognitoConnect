@@ -154,6 +154,7 @@ public class Controller_SignIn extends AppCompatActivity {
                     Toast.makeText(Controller_SignIn.this, "Account with this " + phone + " number do not exists on our databases!", Toast.LENGTH_SHORT).show();
                     loading_bar.dismiss();
                 }
+
             }
 
             @Override

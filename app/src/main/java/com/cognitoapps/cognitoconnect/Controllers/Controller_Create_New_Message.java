@@ -121,6 +121,23 @@ public class Controller_Create_New_Message extends AppCompatActivity {
                                 RootRef.child("Chat_log").child(phones_num).child(Model_Current_User.usrStore.getPhone()).updateChildren(userdataMap);
 
 
+
+                                ////////////////////////////create chat data on sender
+
+                                HashMap<String, Object> chatDataMap2 = new HashMap<>();
+                                chatDataMap2.put("identity", phones_num);
+                                chatDataMap2.put("emotion", "");
+                                 chatDataMap2.put("last_seen", "");
+                                RootRef.child("Chat_data").child(Model_Current_User.usrStore.getPhone()).child(phones_num).updateChildren(chatDataMap2);
+
+                                ////////////////////////////create chat data on receiver
+
+                                HashMap<String, Object> chatDataMap3 = new HashMap<>();
+                                chatDataMap3.put("identity", Model_Current_User.usrStore.getPhone());
+                                chatDataMap3.put("emotion", "");
+                                chatDataMap3.put("last_seen", "");
+                                RootRef.child("Chat_data").child(phones_num).child(Model_Current_User.usrStore.getPhone()).updateChildren(chatDataMap3);
+
                                 loading_bar.dismiss();
 
                                 //kill the activity when screen is off

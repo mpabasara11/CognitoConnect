@@ -40,7 +40,7 @@
 
     <Button
         android:id="@+id/btn_new_chat"
-        android:layout_width="300dp"
+        android:layout_width="365dp"
         android:layout_height="48dp"
         android:layout_gravity="center"
         android:background="@drawable/button_type1"

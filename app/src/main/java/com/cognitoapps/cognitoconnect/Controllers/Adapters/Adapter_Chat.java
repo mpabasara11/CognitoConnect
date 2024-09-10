@@ -94,6 +94,11 @@ public class Adapter_Chat extends FirebaseRecyclerAdapter<Model_Chat, Adapter_Ch
 
                             FirebaseDatabase.getInstance().getReference().child("Chats").child(model.getChat_id()).removeValue();
 
+                            //remove values from chat data
+
+                            FirebaseDatabase.getInstance().getReference().child("Chat_data").child(Model_Current_User.usrStore.getPhone()).child(model.getIdentity()).removeValue();
+                            FirebaseDatabase.getInstance().getReference().child("Chat_data").child(model.getIdentity()).child(Model_Current_User.usrStore.getPhone()).removeValue();
+
 
 
                             Toast.makeText(context, "Chat history cleared ", Toast.LENGTH_SHORT).show();
