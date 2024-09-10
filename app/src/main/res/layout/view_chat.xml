@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_1"
+    android:background="#1B2043"
     tools:context=".Controllers.Controller_Chat">
 
 
@@ -74,14 +74,14 @@
 
     <Button
         android:id="@+id/btn_send_message"
-        android:layout_width="265dp"
+        android:layout_width="365dp"
         android:layout_height="45dp"
 
         android:layout_row="1"
         android:layout_column="0"
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="12dp"
-        android:background="@drawable/button_type1"
+        android:background="@drawable/button_type4"
         android:text="Send"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -94,6 +94,7 @@
         android:layout_width="88dp"
         android:layout_height="35dp"
 
+        android:layout_marginBottom="2dp"
         android:background="@drawable/button_type3"
         android:text="Settings"
         android:textColor="@color/white"
@@ -104,12 +105,22 @@
         android:id="@+id/lbl_emotion"
         android:layout_width="400dp"
         android:layout_height="35dp"
-        android:text="#emotion"
         android:textAlignment="center"
         android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/rcl_chat_view"
         app:layout_constraintStart_toStartOf="@+id/rcl_chat_view"
         app:layout_constraintTop_toBottomOf="@+id/lbl_receiver_username" />
+
+    <View
+        android:id="@+id/divider4"
+        android:layout_width="391dp"
+        android:layout_height="3dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/lbl_emotion"
+        app:layout_constraintStart_toStartOf="@+id/lbl_emotion"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_emotion" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

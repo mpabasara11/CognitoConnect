@@ -4,8 +4,8 @@
 
     <!-- Modern gradient colors -->
     <gradient
-        android:startColor="#01579B"
-        android:endColor="#0277BD"
+        android:startColor="#454E80"
+        android:endColor="#32408C"
         android:angle="90" />
 
     <!-- Square corners -->

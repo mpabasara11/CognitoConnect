@@ -45,6 +45,7 @@ import org.opencv.android.CameraActivity;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Core;
+import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfRect;
 import org.opencv.core.Rect;
@@ -88,7 +89,7 @@ public class Controller_Chat extends CameraActivity implements CvCameraViewListe
     private Handler handler = new Handler(Looper.getMainLooper());
 
 
-boolean x;
+
      RecyclerView recyclerView;
      Adapter_Conversation adapterConversation;
 
@@ -105,10 +106,8 @@ boolean x;
         lbl_emotion = findViewById(R.id.lbl_emotion);
 
 
-
         recyclerView = findViewById(R.id.rcl_chat_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
 
 
 
@@ -118,21 +117,31 @@ boolean x;
 
 
 
-
-
         final DatabaseReference RootRef1;
         RootRef1 = FirebaseDatabase.getInstance().getReference();
 
         RootRef1.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.child("Chat_log").child(chat_owner).child(chat_recipient).exists()) {
+                if (snapshot.child("Chat_log").child(chat_recipient).child(chat_owner).exists()) {
 
-                    Model_Chat chatData = snapshot.child("Chat_log").child(chat_owner).child(chat_recipient).getValue(Model_Chat.class);
+                    Model_Chat chatData = snapshot.child("Chat_log").child(chat_recipient).child(chat_owner).getValue(Model_Chat.class);
 
                     if (chatData != null) {
 
-                    /////////////////////////////////
+                        //////////////////
+
+                        if (chatData.getFace_exp())
+                        {
+                            mOpenCvCameraView.enableView();
+                        }
+                        else
+                        {
+                            mOpenCvCameraView.disableView();
+                        }
+
+                        ///////////////////
+
 
                     }
                 }
@@ -204,7 +213,16 @@ btn_settings.setOnClickListener(new View.OnClickListener() {
 });
 
 
-        /////////////////////////////////////////////////
+    enableFaceDetection();
+
+
+    }
+
+
+
+    public void enableFaceDetection()
+    {
+
         if (OpenCVLoader.initLocal()) {
 
 
@@ -223,7 +241,7 @@ btn_settings.setOnClickListener(new View.OnClickListener() {
 
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
 
-         mOpenCvCameraView.setAlpha(0);
+        mOpenCvCameraView.setAlpha(0);
 
         mOpenCvCameraView.setCvCameraViewListener(this);
 
@@ -253,7 +271,6 @@ btn_settings.setOnClickListener(new View.OnClickListener() {
         } catch (Exception e) {
             e.printStackTrace();
         }
-       // hlw.setText("sdasd");
 
 
 
@@ -272,7 +289,6 @@ btn_settings.setOnClickListener(new View.OnClickListener() {
 
             Log.d("tgmodel", "model issue");
         }
-        ////////////////////////////////////////
 
 
     }
@@ -306,7 +322,7 @@ btn_settings.setOnClickListener(new View.OnClickListener() {
     }
 
 
-    ///////////////////////////
+
 
     @Override
     public void onCameraViewStarted(int width, int height) {
@@ -361,6 +377,7 @@ btn_settings.setOnClickListener(new View.OnClickListener() {
 
             // Extract face ROI and preprocess
             Mat faceROI = new Mat(rotatedFrame, rect);
+
             ByteBuffer inputBuffer = preprocessFace(faceROI);
 
 
@@ -378,8 +395,16 @@ btn_settings.setOnClickListener(new View.OnClickListener() {
                 }
             }
 
-            String[] emotions = {"Angry", "Natural", "Disgust", "Contempt", "Happy", "Sad", "Suprised"};
-            String detectedEmotion = emotions[maxIndex];
+            String detectedEmotion;
+            if (maxConfidence < 0.0) {
+                detectedEmotion = "Uncertain";  // If confidence is low, return "Uncertain"
+            } else {
+                String[] emotions = {"😡", "😐", "🤢", "🤨", "😄", "😟", "😮"};
+                 detectedEmotion = emotions[maxIndex];
+            }
+
+
+
 
             Log.d("emotion", "Detected emotion: " + detectedEmotion);
 
@@ -387,7 +412,7 @@ btn_settings.setOnClickListener(new View.OnClickListener() {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    lbl_emotion.setText("Emotion - "+detectedEmotion);
+                    lbl_emotion.setText(""+detectedEmotion);
                 }
             });
 
@@ -437,9 +462,9 @@ btn_settings.setOnClickListener(new View.OnClickListener() {
             int g = (pixelValue >> 8) & 0xFF;
             int b = pixelValue & 0xFF;
 
-            inputBuffer.putFloat(r / 255.0f);
-            inputBuffer.putFloat(g / 255.0f);
-            inputBuffer.putFloat(b / 255.0f);
+            inputBuffer.putFloat((r / 255.0f)-0.2f);
+            inputBuffer.putFloat((g / 255.0f)-0.2f);
+            inputBuffer.putFloat((b / 255.0f)-0.2f);
         }
 
         return inputBuffer;
@@ -484,5 +509,5 @@ btn_settings.setOnClickListener(new View.OnClickListener() {
             mOpenCvCameraView.disableView();
     }
 
-    ///////////////////////////////
+
 }

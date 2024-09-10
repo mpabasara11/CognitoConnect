@@ -11,7 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@drawable/custom_gradient"
+        android:background="#2F3253"
         android:padding="10dp">
 
 

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:background="@drawable/custom_gradient"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Controllers.Controller_SplashScreen">
@@ -10,10 +11,11 @@
 
     <ImageView
         android:id="@+id/img_logo"
-        android:layout_width="393dp"
-        android:layout_height="377dp"
+        android:layout_width="293dp"
+        android:layout_height="277dp"
         android:layout_gravity="center"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="158dp"
+         app:tint="#A8B0DC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +38,7 @@
         android:layout_width="195dp"
         android:layout_height="36dp"
         android:layout_marginTop="8dp"
+        android:textColor="@color/white"
         android:text="Verifying Internet Connection..."
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/pgb_loading"
