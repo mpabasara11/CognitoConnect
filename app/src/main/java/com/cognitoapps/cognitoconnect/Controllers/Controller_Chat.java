@@ -534,25 +534,36 @@ btn_settings.setOnClickListener(new View.OnClickListener() {
     }
 
     private ByteBuffer preprocessFace(Mat face) {
+        // Create a new Mat to store the resized face
         Mat resizedFace = new Mat();
-        Imgproc.resize(face, resizedFace, new Size(64, 64));
+
+        // Resize the face image to 64x64 using an optimized interpolation method
+        // INTER_AREA is generally better for downsizing, while INTER_LINEAR is fast for both.
+        Imgproc.resize(face, resizedFace, new Size(64, 64), 0, 0, Imgproc.INTER_LINEAR);
+
+        // Convert the resized Mat to a Bitmap for easier pixel manipulation
         Bitmap bitmap = Bitmap.createBitmap(resizedFace.cols(), resizedFace.rows(), Bitmap.Config.ARGB_8888);
         org.opencv.android.Utils.matToBitmap(resizedFace, bitmap);
 
+        // Allocate a ByteBuffer for storing normalized RGB values
         ByteBuffer inputBuffer = ByteBuffer.allocateDirect(4 * 64 * 64 * 3);
         inputBuffer.order(ByteOrder.nativeOrder());
 
+        // Prepare an array to hold pixel values
         int[] intValues = new int[64 * 64];
         bitmap.getPixels(intValues, 0, bitmap.getWidth(), 0, 0, bitmap.getWidth(), bitmap.getHeight());
 
+        // Iterate through each pixel, normalize and store RGB values in the buffer
         for (int pixelValue : intValues) {
+            // Extract red, green, and blue channels from the pixel (ARGB format)
             int r = (pixelValue >> 16) & 0xFF;
             int g = (pixelValue >> 8) & 0xFF;
             int b = pixelValue & 0xFF;
 
-            inputBuffer.putFloat((r / 255.0f)-0.2f);
-            inputBuffer.putFloat((g / 255.0f)-0.2f);
-            inputBuffer.putFloat((b / 255.0f)-0.2f);
+            // Normalize and put the values into the buffer (0 to 1 range)
+            inputBuffer.putFloat(r / 255.0f);
+            inputBuffer.putFloat(g / 255.0f);
+            inputBuffer.putFloat(b / 255.0f);
         }
 
         return inputBuffer;
