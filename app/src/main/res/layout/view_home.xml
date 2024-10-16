@@ -11,8 +11,9 @@
     <!-- Username TextView -->
     <TextView
         android:id="@+id/lbl_chat"
-        android:layout_width="290dp"
+        android:layout_width="wrap_content"
         android:layout_height="35dp"
+        android:layout_marginStart="2dp"
         android:layout_marginTop="10dp"
         android:text="Chats"
         android:textColor="#F3EEEE"
@@ -28,7 +29,7 @@
     <!-- New Chat Button -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcl_chat_view"
-        android:layout_width="390dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/btn_new_chat"
@@ -40,15 +41,16 @@
 
     <Button
         android:id="@+id/btn_new_chat"
-        android:layout_width="365dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_gravity="center"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         android:background="@drawable/button_type1"
         android:text="New Message"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.978" />
@@ -63,6 +65,8 @@
         android:text="Sign Out"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/lbl_chat"
+        app:layout_constraintEnd_toEndOf="@+id/rcl_chat_view"
+        app:layout_constraintHorizontal_bias="0.92"
         app:layout_constraintStart_toEndOf="@+id/lbl_chat" />
 
 

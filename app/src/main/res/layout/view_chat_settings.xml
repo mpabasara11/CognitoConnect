@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/lbl_chat_settings"
-        android:layout_width="357dp"
+        android:layout_width="0dp"
         android:layout_height="39dp"
         android:text="Chat Settings"
         android:textColor="#F3EEEE"
@@ -23,7 +23,7 @@
     <TextView
         android:id="@+id/tvFeatureDescription"
 
-        android:layout_width="311dp"
+        android:layout_width="0dp"
         android:layout_height="41dp"
         android:layout_marginTop="20dp"
         android:text="Facial Expression Analysis"
@@ -37,7 +37,7 @@
     <TextView
         android:id="@+id/tvFeatureDetails"
 
-        android:layout_width="364dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="When this feature is enabled, the app will use your device's camera to analyze your facial expressions while you send messages. The analysis results will be shared with the recipient of your messages to provide additional emotional context. Please note that this may involve sharing sensitive data about your emotional state."
@@ -51,7 +51,7 @@
     <Switch
         android:id="@+id/switch_facial_exp"
 
-        android:layout_width="258dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="12dp"
         android:text="Enable Facial Expression Analysis"
@@ -63,7 +63,7 @@
 
     <View
         android:id="@+id/divider"
-        android:layout_width="391dp"
+        android:layout_width="0dp"
         android:layout_height="2dp"
         android:layout_marginTop="12dp"
         android:background="?android:attr/listDivider"
@@ -75,7 +75,7 @@
 
     <View
         android:id="@+id/divider2"
-        android:layout_width="391dp"
+        android:layout_width="0dp"
         android:layout_height="2dp"
         android:layout_marginTop="12dp"
         android:background="?android:attr/listDivider"
@@ -88,7 +88,7 @@
     <TextView
         android:id="@+id/tvFeatureDescription2"
 
-        android:layout_width="311dp"
+        android:layout_width="0dp"
         android:layout_height="41dp"
         android:layout_marginTop="20dp"
         android:text="Last Seen"
@@ -102,7 +102,7 @@
     <TextView
         android:id="@+id/tvFeatureDetails1"
 
-        android:layout_width="364dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="This feature shows when you were last active on the app, allowing your contacts to see your last online time."
@@ -117,7 +117,7 @@
     <Switch
         android:id="@+id/switch_last_seen"
 
-        android:layout_width="258dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="12dp"
         android:text="Enable Last Seen"
@@ -131,7 +131,7 @@
 
     <View
         android:id="@+id/divider3"
-        android:layout_width="391dp"
+        android:layout_width="0dp"
         android:layout_height="2dp"
         android:layout_marginTop="12dp"
         android:background="?android:attr/listDivider"
