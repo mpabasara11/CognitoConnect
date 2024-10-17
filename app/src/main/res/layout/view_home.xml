@@ -4,61 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_1"
+    android:background="#1B2042"
     android:orientation="vertical"
     tools:context=".Controllers.Controller_Home">
 
-
+    <!-- Username TextView -->
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="321dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="4dp"
-        android:text="Online"
-        android:textAlignment="center"
+        android:id="@+id/lbl_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="10dp"
+        android:text="Chats"
         android:textColor="#F3EEEE"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/rcl_chat_view"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="@+id/rcl_chat_view"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- RecyclerView for Chat Items -->
+
+    <!-- New Chat Button -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcl_chat_view"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintBottom_toTopOf="@+id/btn_new_chat"
+        app:layout_constraintEnd_toEndOf="@+id/btn_new_chat"
+        app:layout_constraintStart_toStartOf="@+id/btn_new_chat"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_chat" />
+
+    <!-- Sign Out Button -->
 
     <Button
         android:id="@+id/btn_new_chat"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         android:background="@drawable/button_type1"
         android:text="New Message"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.978" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="0dp" />
+    <Button
+        android:id="@+id/btn_sign_out"
+        android:layout_width="88dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="67dp" />
+        android:background="@drawable/button_type2"
+        android:text="Sign Out"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/lbl_chat"
+        app:layout_constraintEnd_toEndOf="@+id/rcl_chat_view"
+        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintStart_toEndOf="@+id/lbl_chat" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.cognitoapps.cognitoconnect.Controllers;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.cognitoapps.cognitoconnect.Models.Model_Current_User;
+import com.cognitoapps.cognitoconnect.Models.Model_User;
 import com.cognitoapps.cognitoconnect.R;
 
 public class Controller_SplashScreen extends AppCompatActivity {
@@ -31,17 +34,39 @@ public class Controller_SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
 
-
                 if (isNetworkAvailable()) {
-                    // Internet available, redirect to another activity
-                    Intent intent = new Intent(Controller_SplashScreen.this, Controller_StartScreen.class);
-                    startActivity(intent);
-                    finish();
+
+                    SharedPreferences sharedPreferences = getSharedPreferences("CognitoConnectPrefs", MODE_PRIVATE);
+                    Boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn",false);
+                    String username = sharedPreferences.getString("username","noUser");
+
+
+                    if(isLoggedIn)
+                    {
+                        Intent intent = new Intent(Controller_SplashScreen.this, Controller_Home.class);
+                        startActivity(intent);
+
+                        Model_Current_User.usrStore = new Model_User(username,"nullpswd");
+
+                        finish();
+                    }
+                    else
+                    {
+                        // redirect to another activity
+                        Intent intent = new Intent(Controller_SplashScreen.this, Controller_StartScreen.class);
+                        startActivity(intent);
+                        finish();
+                    }
+
+
                 } else {
                     // Handle no internet case (e.g., display an error message or retry option)
                     Toast.makeText(Controller_SplashScreen.this, "No internet connection!", Toast.LENGTH_SHORT).show();
                     // (Optional) Retry logic or alternative functionality
-                }}
+                }
+
+            }
+
 
             }, 2500);}
 

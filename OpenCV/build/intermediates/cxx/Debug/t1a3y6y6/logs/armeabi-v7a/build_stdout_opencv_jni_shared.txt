@@ -1,0 +1,2 @@
+ninja: Entering directory `D:\Repositories\Android\CognitoConnect\OpenCV\.cxx\Debug\t1a3y6y6\armeabi-v7a'
+ninja: no work to do.

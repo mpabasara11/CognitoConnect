@@ -12,4 +12,4 @@
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: D:/Repositories/Android/CognitoConnect-main/OpenCV/.cxx/Debug/t1a3y6y6/x86
+-- Build files have been written to: D:/Repositories/Android/CognitoConnect/OpenCV/.cxx/Debug/t1a3y6y6/x86

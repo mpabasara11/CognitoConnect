@@ -1,5 +1,5 @@
 {
-  "installationFolder": "D:\\Repositories\\Android\\CognitoConnect-main\\OpenCV\\build\\intermediates\\prefab_package\\release\\prefab",
+  "installationFolder": "D:\\Repositories\\Android\\CognitoConnect\\OpenCV\\build\\intermediates\\prefab_package\\release\\prefab",
   "gradlePath": ":OpenCV",
   "packageInfo": {
     "packageName": "OpenCV",
@@ -8,7 +8,7 @@
     "modules": [
       {
         "moduleName": "opencv_jni_shared",
-        "moduleHeaders": "D:\\Repositories\\Android\\CognitoConnect-main\\OpenCV\\native\\jni\\include",
+        "moduleHeaders": "D:\\Repositories\\Android\\CognitoConnect\\OpenCV\\native\\jni\\include",
         "moduleExportLibraries": [],
         "abis": []
       }
